@@ -6,7 +6,8 @@
 </head>
 <body>
 <h1>学生详情</h1>
-    <a href="#">返回</a>
+    <a href="javascript:history.back()">返回</a>
+    <button onclick="history.back()">返回</button>
     <table border="1">
         <tr>
             <td>学号</td>

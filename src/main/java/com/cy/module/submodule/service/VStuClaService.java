@@ -2,6 +2,7 @@ package com.cy.module.submodule.service;
 
 import com.cy.module.submodule.entity.VStuCla;
 import com.github.pagehelper.PageInfo;
+import common.pojo.SearchColumnWithPage;
 
 
 /**
@@ -9,9 +10,10 @@ import com.github.pagehelper.PageInfo;
  */
 public interface VStuClaService {
 
-    PageInfo<VStuCla> selectAll(Integer pageNum, Integer pageSize);
+    PageInfo<VStuCla> selectAll(SearchColumnWithPage searchColumnWithPage);
 
     VStuCla selectByPrimaryKey(Integer stuId);
 
-    PageInfo<VStuCla> fuzzySearch(String[] stringArr, Integer pageNum, Integer pageSize);
+
+
 }
