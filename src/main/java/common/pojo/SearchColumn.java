@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * 装载要查询的字段
  */
-public class SearchColumnWithPage {
+public class SearchColumn {
     private Integer stuId;
 
     private String stuName;
@@ -20,15 +20,7 @@ public class SearchColumnWithPage {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date stuBirthEnd;
 
-    private String claId;
-
     private String claName;
-
-    private Integer claTotalNum;
-
-    private Integer pageNum;
-
-    private Integer pageSize;
 
     public Integer getStuId() {
         return stuId;
@@ -70,14 +62,6 @@ public class SearchColumnWithPage {
         this.stuBirthEnd = stuBirthEnd;
     }
 
-    public String getClaId() {
-        return claId;
-    }
-
-    public void setClaId(String claId) {
-        this.claId = claId;
-    }
-
     public String getClaName() {
         return claName;
     }
@@ -86,43 +70,15 @@ public class SearchColumnWithPage {
         this.claName = claName;
     }
 
-    public Integer getClaTotalNum() {
-        return claTotalNum;
-    }
-
-    public void setClaTotalNum(Integer claTotalNum) {
-        this.claTotalNum = claTotalNum;
-    }
-
-    public Integer getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(Integer pageNum) {
-        this.pageNum = pageNum;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-    }
-
     @Override
     public String toString() {
-        return "SearchColumnWithPage{" +
+        return "SearchColumn{" +
                 "stuId=" + stuId +
                 ", stuName='" + stuName + '\'' +
                 ", stuSex='" + stuSex + '\'' +
                 ", stuBirthStart=" + stuBirthStart +
                 ", stuBirthEnd=" + stuBirthEnd +
-                ", claId='" + claId + '\'' +
                 ", claName='" + claName + '\'' +
-                ", claTotalNum=" + claTotalNum +
-                ", pageNum=" + pageNum +
-                ", pageSize=" + pageSize +
                 '}';
     }
 }

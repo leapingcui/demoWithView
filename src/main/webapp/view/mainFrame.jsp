@@ -8,23 +8,25 @@
 <body>
 <h1>学生信息</h1>
 <form action="${webRoot}/vStuClaController/showAllStudents.do" method="get">
+    <input type="hidden" name="pageNum" value="" />
+    <input type="hidden" name="pageSize" value="" />
     <table>
         <tr>
             <td>学号:</td>
-            <td><input type="text" name="stuId" id="stuId" value="${searchColumnWithPage.stuId}"/></td>
+            <td><input type="text" name="stuId" id="stuId" value="${searchColumn.stuId}"/></td>
             <td>姓名:</td>
-            <td><input type="text" name="stuName" id="stuName" value="${searchColumnWithPage.stuName}"/></td>
+            <td><input type="text" name="stuName" id="stuName" value="${searchColumn.stuName}"/></td>
             <td>性别:</td>
-            <td><input type="text" name="stuSex" id="stuSex" value="${searchColumnWithPage.stuSex}"/></td>
+            <td><input type="text" name="stuSex" id="stuSex" value="${searchColumn.stuSex}"/></td>
             <td></td>
         </tr>
         <tr>
             <td>出生日期:</td>
-            <td><input type="text" name="stuBirthStart" id="stuBirthStart" value="${searchColumnWithPage.stuBirthStart}"/></td>
+            <td><input type="text" name="stuBirthStart" id="stuBirthStart" value="${searchColumn.stuBirthStart}"/></td>
             <td>~</td>
-            <td><input type="text" name="stuBirthEnd" id="stuBirthEnd" value="${searchColumnWithPage.stuBirthEnd}"/></td>
+            <td><input type="text" name="stuBirthEnd" id="stuBirthEnd" value="${searchColumn.stuBirthEnd}"/></td>
             <td>班级名:</td>
-            <td><input type="text" name="claName" id="claName" value="${searchColumnWithPage.claName}"/></td>
+            <td><input type="text" name="claName" id="claName" value="${searchColumn.claName}"/></td>
             <td><input type="submit" value="查询" /></td>
         </tr>
 
@@ -65,20 +67,19 @@
     </c:when>
     <c:otherwise>
         <%--<button id="firstPage">首页</button>--%>
-        <a href="${webRoot}/vStuClaController/showAllStudents.do?pageNum=1&
-        pageSize=${searchColumnWithPage.pageSize}&
-        stuId=${searchColumnWithPage.stuId}&stuName=${searchColumnWithPage.stuName}&
-        stuSex=${searchColumnWithPage.stuSex}&stuBirthStart=${searchColumnWithPage.stuBirthStart}&
-        stuBirthEnd=${searchColumnWithPage.stuBirthEnd}&claName=${searchColumnWithPage.claName}">首页</a>
+        <a href="${webRoot}/vStuClaController/showAllStudents.do?pageNum=1&pageSize=${pageInfo.pageSize}&
+        stuId=${searchColumn.stuId}&stuName=${searchColumn.stuName}&stuSex=${searchColumn.stuSex}&
+        stuBirthStart=${searchColumn.stuBirthStart}&stuBirthEnd=${searchColumn.stuBirthEnd}&
+        claName=${searchColumn.claName}">首页</a>
     </c:otherwise>
 </c:choose>
 <c:choose>
     <c:when test="${pageInfo.hasPreviousPage}">
         <%--<button id="previousPage">上一页</button>--%>
-        <a href="${webRoot}/vStuClaController/showAllStudents.do?pageNum=${pageInfo.pageNum - 1}&pageSize=${searchColumnWithPage.pageSize}&
-        stuId=${searchColumnWithPage.stuId}&stuName=${searchColumnWithPage.stuName}&
-        stuSex=${searchColumnWithPage.stuSex}&stuBirthStart=${searchColumnWithPage.stuBirthStart}&
-        stuBirthEnd=${searchColumnWithPage.stuBirthEnd}&claName=${searchColumnWithPage.claName}">上一页</a>
+        <a href="${webRoot}/vStuClaController/showAllStudents.do?pageNum=${pageInfo.pageNum - 1}&pageSize=${pageInfo.pageSize}&
+        stuId=${searchColumn.stuId}&stuName=${searchColumn.stuName}&stuSex=${searchColumn.stuSex}&
+        stuBirthStart=${searchColumn.stuBirthStart}&stuBirthEnd=${searchColumn.stuBirthEnd}&
+        claName=${searchColumn.claName}">上一页</a>
     </c:when>
     <c:otherwise>
         上一页
@@ -87,10 +88,10 @@
 <c:choose>
     <c:when test="${pageInfo.hasNextPage}">
         <%--<button id="nextPage">下一页</button>--%>
-        <a href="${webRoot}/vStuClaController/showAllStudents.do?pageNum=${pageInfo.pageNum + 1}&pageSize=${searchColumnWithPage.pageSize}&
-        stuId=${searchColumnWithPage.stuId}&stuName=${searchColumnWithPage.stuName}&
-        stuSex=${searchColumnWithPage.stuSex}&stuBirthStart=${searchColumnWithPage.stuBirthStart}&
-        stuBirthEnd=${searchColumnWithPage.stuBirthEnd}&claName=${searchColumnWithPage.claName}">下一页</a>
+        <a href="${webRoot}/vStuClaController/showAllStudents.do?pageNum=${pageInfo.pageNum + 1}&pageSize=${pageInfo.pageSize}&
+        stuId=${searchColumn.stuId}&stuName=${searchColumn.stuName}&stuSex=${searchColumn.stuSex}&
+        stuBirthStart=${searchColumn.stuBirthStart}&stuBirthEnd=${searchColumn.stuBirthEnd}&
+        claName=${searchColumn.claName}">下一页</a>
     </c:when>
     <c:otherwise>
         下一页
@@ -102,50 +103,12 @@
     </c:when>
     <c:otherwise>
         <%--<button id="lastPage">末页</button>--%>
-        <a href="${webRoot}/vStuClaController/showAllStudents.do?pageNum=${pageInfo.lastPage}&pageSize=${searchColumnWithPage.pageSize}&
-        stuId=${searchColumnWithPage.stuId}&stuName=${searchColumnWithPage.stuName}&
-        stuSex=${searchColumnWithPage.stuSex}&stuBirthStart=${searchColumnWithPage.stuBirthStart}&
-        stuBirthEnd=${searchColumnWithPage.stuBirthEnd}&claName=${searchColumnWithPage.claName}">末页</a>
+        <a href="${webRoot}/vStuClaController/showAllStudents.do?pageNum=${pageInfo.lastPage}&pageSize=${pageInfo.pageSize}&
+        stuId=${searchColumn.stuId}&stuName=${searchColumn.stuName}&stuSex=${searchColumn.stuSex}&
+        stuBirthStart=${searchColumn.stuBirthStart}&stuBirthEnd=${searchColumn.stuBirthEnd}&
+        claName=${searchColumn.claName}">末页</a>
     </c:otherwise>
 </c:choose>
 
-
-
-
-
-<script type="application/javascript">
-
-    document.getElementById("firstPage").onclick = function () {
-        window.location.href = "${webRoot}/vStuClaController/showAllStudents.do?pageNum=1&pageSize=${searchColumnWithPage.pageSize}&" +
-        "stuId=${searchColumnWithPage.stuId}&"+"stuName=${searchColumnWithPage.stuName}&"+
-        "stuSex=${searchColumnWithPage.stuSex}&"+"stuBirthStart=${searchColumnWithPage.stuBirthStart}&" +
-        "stuBirthEnd=${searchColumnWithPage.stuBirthEnd}&"+"claName=${searchColumnWithPage.claName}";
-    };
-
-    document.getElementById("previousPage").onclick = function () {
-        window.location.href = "${webRoot}/vStuClaController/showAllStudents.do?pageNum=${pageInfo.pageNum - 1}&" +
-         "pageSize=${searchColumnWithPage.pageSize}&" +
-        "stuId=${searchColumnWithPage.stuId}&"+"stuName=${searchColumnWithPage.stuName}&"+
-        "stuSex=${searchColumnWithPage.stuSex}&"+"stuBirthStart=${searchColumnWithPage.stuBirthStart}&" +
-        "stuBirthEnd=${searchColumnWithPage.stuBirthEnd}&"+"claName=${searchColumnWithPage.claName}";
-    };
-
-    document.getElementById("nextPage").onclick = function () {
-//        alert("haha");
-        window.location.href = "${webRoot}/vStuClaController/showAllStudents.do?pageNum=${pageInfo.pageNum + 1}&" +
-         "pageSize=${searchColumnWithPage.pageSize}&" +
-        "stuId=${searchColumnWithPage.stuId}&"+"stuName=${searchColumnWithPage.stuName}&"+
-        "stuSex=${searchColumnWithPage.stuSex}&"+"stuBirthStart=${searchColumnWithPage.stuBirthStart}&" +
-        "stuBirthEnd=${searchColumnWithPage.stuBirthEnd}&"+"claName=${searchColumnWithPage.claName}";
-    };
-
-    document.getElementById("lastPage").onclick = function () {
-        window.location.href = "${webRoot}/vStuClaController/showAllStudents.do?pageNum=${pageInfo.lastPage}&" +
-         "pageSize=${searchColumnWithPage.pageSize}&" +
-        "stuId=${searchColumnWithPage.stuId}&"+"stuName=${searchColumnWithPage.stuName}&"+
-        "stuSex=${searchColumnWithPage.stuSex}&"+"stuBirthStart=${searchColumnWithPage.stuBirthStart}&" +
-        "stuBirthEnd=${searchColumnWithPage.stuBirthEnd}&"+"claName=${searchColumnWithPage.claName}";
-    };
-</script>
 </body>
 </html>

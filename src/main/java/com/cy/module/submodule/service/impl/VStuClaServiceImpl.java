@@ -6,7 +6,7 @@ import com.cy.module.submodule.mapper.VStuClaMapper;
 import com.cy.module.submodule.service.VStuClaService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import common.pojo.SearchColumnWithPage;
+import common.pojo.SearchColumn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -25,21 +25,21 @@ public class VStuClaServiceImpl implements VStuClaService {
     @Autowired
     private VStuClaMapper vStuClaMapper;
 
-    public PageInfo<VStuCla> selectAll(SearchColumnWithPage searchColumnWithPage) {
-        PageHelper.startPage(searchColumnWithPage.getPageNum(), searchColumnWithPage.getPageSize());
+    public PageInfo<VStuCla> selectAll(SearchColumn searchColumn,Integer pageNum,Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
         VStuClaExample example = new VStuClaExample();
         VStuClaExample.Criteria criteria = example.createCriteria();
 
-        if (searchColumnWithPage.getStuId() != null)
-            criteria.andStuIdEqualTo(searchColumnWithPage.getStuId());
-        if (searchColumnWithPage.getStuName() != null && ! searchColumnWithPage.getStuName().trim().equals(""))
-            criteria.andStuNameLike("%" + searchColumnWithPage.getStuName() + "%");
-        if (searchColumnWithPage.getStuSex() != null && ! searchColumnWithPage.getStuSex().trim().equals(""))
-            criteria.andStuSexLike("%" + searchColumnWithPage.getStuSex() + "%");
-        if (searchColumnWithPage.getStuBirthStart() != null && searchColumnWithPage.getStuBirthEnd() != null)
-            criteria.andStuBirthBetween(searchColumnWithPage.getStuBirthStart(),searchColumnWithPage.getStuBirthEnd());
-        if (searchColumnWithPage.getClaName() != null && ! searchColumnWithPage.getClaName().trim().equals(""))
-            criteria.andClaNameLike("%" + searchColumnWithPage.getClaName() + "%");
+        if (searchColumn.getStuId() != null)
+            criteria.andStuIdEqualTo(searchColumn.getStuId());
+        if (searchColumn.getStuName() != null && ! searchColumn.getStuName().trim().equals(""))
+            criteria.andStuNameLike("%" + searchColumn.getStuName() + "%");
+        if (searchColumn.getStuSex() != null && ! searchColumn.getStuSex().trim().equals(""))
+            criteria.andStuSexLike("%" + searchColumn.getStuSex() + "%");
+        if (searchColumn.getStuBirthEnd() != null && searchColumn.getStuBirthStart() != null)
+            criteria.andStuBirthBetween(searchColumn.getStuBirthStart(), searchColumn.getStuBirthEnd());
+        if (searchColumn.getClaName() != null && ! searchColumn.getClaName().trim().equals(""))
+            criteria.andClaNameLike("%" + searchColumn.getClaName() + "%");
 
         List<VStuCla> vStuClas = vStuClaMapper.selectByExample(example);
         PageInfo<VStuCla> pageInfo = new PageInfo<VStuCla>(vStuClas);
