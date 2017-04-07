@@ -55,10 +55,11 @@
         <tr>
             <td>照片:</td>
             <td>
+                <%--<img src='http://localhost:8080/upload/tou_xiang.jpg' />能显示（在tomcat的server.xml中配置了虚拟目录）--%>
                 <%--http://localhost:8080/demowv/upload/tou_xiang.jpg--%>
                 <%--<img src='${webRoot}/upload/tou_xiang.jpg' id="imgSrc" name="imgSrc" width="100px"/>--%>
                 <img src='${absolutePath}' id="imgSrc" name="imgSrc" width="100px" />
-                <a href="${webRoot}/view/module/submodule/uploadStuPic.jsp" target="_blank"><button type="button">上传图片</button></a>
+                <%--<a href="${webRoot}/view/module/submodule/uploadStuPic.jsp" target="_blank"><button type="button">上传图片</button></a>--%>
                 <input type="file" id="picFile" name="picFile" onchange="submitPicUpload()" />
                 <input type="hidden" id="stuPic" name="stuPic" value="${relativePath}" />
             </td>
