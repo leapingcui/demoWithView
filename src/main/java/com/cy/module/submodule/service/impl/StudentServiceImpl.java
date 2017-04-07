@@ -1,6 +1,6 @@
 package com.cy.module.submodule.service.impl;
 
-import com.cy.module.submodule.entity.Student;
+import com.cy.module.submodule.pojo.Student;
 import com.cy.module.submodule.mapper.StudentMapper;
 import com.cy.module.submodule.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;

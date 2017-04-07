@@ -1,7 +1,7 @@
 package com.cy.module.submodule.mapper;
 
-import com.cy.module.submodule.entity.Classes;
-import com.cy.module.submodule.entity.ClassesExample;
+import com.cy.module.submodule.pojo.Classes;
+import com.cy.module.submodule.pojo.ClassesExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

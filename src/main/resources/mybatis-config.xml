@@ -18,7 +18,7 @@
 
 	<!--别名不支持通配符-->
 	<typeAliases>
-		<package name="com.cy.module.submodule.entity"></package>
+		<package name="com.cy.module.submodule.pojo"></package>
 	</typeAliases>
 
 	<!--这里添加分页插件-->

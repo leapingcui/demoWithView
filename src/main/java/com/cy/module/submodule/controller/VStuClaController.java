@@ -1,6 +1,6 @@
 package com.cy.module.submodule.controller;
 
-import com.cy.module.submodule.entity.VStuCla;
+import com.cy.module.submodule.pojo.VStuCla;
 import com.cy.module.submodule.service.VStuClaService;
 import com.github.pagehelper.PageInfo;
 import common.pojo.SearchColumn;

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cy.module.submodule.mapper.VStuClaMapper" >
-  <resultMap id="BaseResultMap" type="com.cy.module.submodule.entity.VStuCla" >
+  <resultMap id="BaseResultMap" type="com.cy.module.submodule.pojo.VStuCla" >
     <id column="stu_id" property="stuId" jdbcType="INTEGER" />
     <result column="stu_pwd" property="stuPwd" jdbcType="VARCHAR" />
     <result column="stu_name" property="stuName" jdbcType="VARCHAR" />
+    <result column="stu_pic" property="stuPic" jdbcType="VARCHAR" />
     <result column="stu_sex" property="stuSex" jdbcType="VARCHAR" />
     <result column="stu_birth" property="stuBirth" jdbcType="DATE" />
-    <result column="cla_id" property="claId" jdbcType="VARCHAR" />
+    <result column="stu_cla_id" property="stuClaId" jdbcType="VARCHAR" />
     <result column="cla_name" property="claName" jdbcType="VARCHAR" />
     <result column="cla_total_num" property="claTotalNum" jdbcType="INTEGER" />
   </resultMap>
@@ -70,9 +71,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    stu_id, stu_pwd, stu_name, stu_sex, stu_birth, cla_id, cla_name, cla_total_num
+    stu_id, stu_pwd, stu_name, stu_pic, stu_sex, stu_birth, stu_cla_id, cla_name, cla_total_num
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cy.module.submodule.entity.VStuClaExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cy.module.submodule.pojo.VStuClaExample" >
     select
     <if test="distinct" >
       distinct
@@ -86,29 +87,29 @@
       order by ${orderByClause}
     </if>
   </select>
-
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
     <include refid="Base_Column_List" />
     from v_stu_cla
     where stu_id = #{stuId,jdbcType=INTEGER}
   </select>
-
-  <delete id="deleteByExample" parameterType="com.cy.module.submodule.entity.VStuClaExample" >
+  <delete id="deleteByExample" parameterType="com.cy.module.submodule.pojo.VStuClaExample" >
     delete from v_stu_cla
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.cy.module.submodule.entity.VStuCla" >
+  <insert id="insert" parameterType="com.cy.module.submodule.pojo.VStuCla" >
     insert into v_stu_cla (stu_id, stu_pwd, stu_name, 
-      stu_sex, stu_birth, cla_id, 
-      cla_name, cla_total_num)
+      stu_pic, stu_sex, stu_birth, 
+      stu_cla_id, cla_name, cla_total_num
+      )
     values (#{stuId,jdbcType=INTEGER}, #{stuPwd,jdbcType=VARCHAR}, #{stuName,jdbcType=VARCHAR}, 
-      #{stuSex,jdbcType=VARCHAR}, #{stuBirth,jdbcType=DATE}, #{claId,jdbcType=VARCHAR}, 
-      #{claName,jdbcType=VARCHAR}, #{claTotalNum,jdbcType=INTEGER})
+      #{stuPic,jdbcType=VARCHAR}, #{stuSex,jdbcType=VARCHAR}, #{stuBirth,jdbcType=DATE}, 
+      #{stuClaId,jdbcType=VARCHAR}, #{claName,jdbcType=VARCHAR}, #{claTotalNum,jdbcType=INTEGER}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.cy.module.submodule.entity.VStuCla" >
+  <insert id="insertSelective" parameterType="com.cy.module.submodule.pojo.VStuCla" >
     insert into v_stu_cla
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="stuId != null" >
@@ -120,14 +121,17 @@
       <if test="stuName != null" >
         stu_name,
       </if>
+      <if test="stuPic != null" >
+        stu_pic,
+      </if>
       <if test="stuSex != null" >
         stu_sex,
       </if>
       <if test="stuBirth != null" >
         stu_birth,
       </if>
-      <if test="claId != null" >
-        cla_id,
+      <if test="stuClaId != null" >
+        stu_cla_id,
       </if>
       <if test="claName != null" >
         cla_name,
@@ -146,14 +150,17 @@
       <if test="stuName != null" >
         #{stuName,jdbcType=VARCHAR},
       </if>
+      <if test="stuPic != null" >
+        #{stuPic,jdbcType=VARCHAR},
+      </if>
       <if test="stuSex != null" >
         #{stuSex,jdbcType=VARCHAR},
       </if>
       <if test="stuBirth != null" >
         #{stuBirth,jdbcType=DATE},
       </if>
-      <if test="claId != null" >
-        #{claId,jdbcType=VARCHAR},
+      <if test="stuClaId != null" >
+        #{stuClaId,jdbcType=VARCHAR},
       </if>
       <if test="claName != null" >
         #{claName,jdbcType=VARCHAR},
@@ -163,7 +170,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.cy.module.submodule.entity.VStuClaExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.cy.module.submodule.pojo.VStuClaExample" resultType="java.lang.Integer" >
     select count(*) from v_stu_cla
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -181,14 +188,17 @@
       <if test="record.stuName != null" >
         stu_name = #{record.stuName,jdbcType=VARCHAR},
       </if>
+      <if test="record.stuPic != null" >
+        stu_pic = #{record.stuPic,jdbcType=VARCHAR},
+      </if>
       <if test="record.stuSex != null" >
         stu_sex = #{record.stuSex,jdbcType=VARCHAR},
       </if>
       <if test="record.stuBirth != null" >
         stu_birth = #{record.stuBirth,jdbcType=DATE},
       </if>
-      <if test="record.claId != null" >
-        cla_id = #{record.claId,jdbcType=VARCHAR},
+      <if test="record.stuClaId != null" >
+        stu_cla_id = #{record.stuClaId,jdbcType=VARCHAR},
       </if>
       <if test="record.claName != null" >
         cla_name = #{record.claName,jdbcType=VARCHAR},
@@ -206,9 +216,10 @@
     set stu_id = #{record.stuId,jdbcType=INTEGER},
       stu_pwd = #{record.stuPwd,jdbcType=VARCHAR},
       stu_name = #{record.stuName,jdbcType=VARCHAR},
+      stu_pic = #{record.stuPic,jdbcType=VARCHAR},
       stu_sex = #{record.stuSex,jdbcType=VARCHAR},
       stu_birth = #{record.stuBirth,jdbcType=DATE},
-      cla_id = #{record.claId,jdbcType=VARCHAR},
+      stu_cla_id = #{record.stuClaId,jdbcType=VARCHAR},
       cla_name = #{record.claName,jdbcType=VARCHAR},
       cla_total_num = #{record.claTotalNum,jdbcType=INTEGER}
     <if test="_parameter != null" >

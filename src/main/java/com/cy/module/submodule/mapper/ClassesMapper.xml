@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cy.module.submodule.mapper.ClassesMapper" >
-  <resultMap id="BaseResultMap" type="com.cy.module.submodule.entity.Classes" >
+  <resultMap id="BaseResultMap" type="com.cy.module.submodule.pojo.Classes" >
     <id column="cla_id" property="claId" jdbcType="VARCHAR" />
     <result column="cla_name" property="claName" jdbcType="VARCHAR" />
     <result column="cla_total_num" property="claTotalNum" jdbcType="INTEGER" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List" >
     cla_id, cla_name, cla_total_num
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cy.module.submodule.entity.ClassesExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cy.module.submodule.pojo.ClassesExample" >
     select
     <if test="distinct" >
       distinct
@@ -91,19 +91,19 @@
     delete from classes
     where cla_id = #{claId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.cy.module.submodule.entity.ClassesExample" >
+  <delete id="deleteByExample" parameterType="com.cy.module.submodule.pojo.ClassesExample" >
     delete from classes
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.cy.module.submodule.entity.Classes" >
+  <insert id="insert" parameterType="com.cy.module.submodule.pojo.Classes" >
     insert into classes (cla_id, cla_name, cla_total_num
       )
     values (#{claId,jdbcType=VARCHAR}, #{claName,jdbcType=VARCHAR}, #{claTotalNum,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.cy.module.submodule.entity.Classes" >
+  <insert id="insertSelective" parameterType="com.cy.module.submodule.pojo.Classes" >
     insert into classes
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="claId != null" >
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.cy.module.submodule.entity.ClassesExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.cy.module.submodule.pojo.ClassesExample" resultType="java.lang.Integer" >
     select count(*) from classes
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cy.module.submodule.entity.Classes" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.cy.module.submodule.pojo.Classes" >
     update classes
     <set >
       <if test="claName != null" >
@@ -172,7 +172,7 @@
     </set>
     where cla_id = #{claId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.cy.module.submodule.entity.Classes" >
+  <update id="updateByPrimaryKey" parameterType="com.cy.module.submodule.pojo.Classes" >
     update classes
     set cla_name = #{claName,jdbcType=VARCHAR},
       cla_total_num = #{claTotalNum,jdbcType=INTEGER}

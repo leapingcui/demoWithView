@@ -55,21 +55,4 @@
     <param-value>classpath:spring/spring-dao.xml</param-value>
   </context-param>
 
-  <!--
-    &lt;!&ndash; Spring监听器 &ndash;&gt;
-    <listener>
-      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    &lt;!&ndash; 防止Spring内存溢出监听器 &ndash;&gt;
-    <listener>
-      <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
-    </listener>
-
-    &lt;!&ndash; 配置SESSION超时，单位是分钟 &ndash;&gt;
-    <session-config>
-      <session-timeout>24</session-timeout>
-    </session-config>
-  -->
-
-
 </web-app>

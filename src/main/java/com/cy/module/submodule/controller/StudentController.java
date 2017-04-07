@@ -1,7 +1,7 @@
 package com.cy.module.submodule.controller;
 
-import com.cy.module.submodule.entity.Student;
-import com.cy.module.submodule.entity.VStuCla;
+import com.cy.module.submodule.pojo.Student;
+import com.cy.module.submodule.pojo.VStuCla;
 import com.cy.module.submodule.service.StudentService;
 import com.cy.module.submodule.service.VStuClaService;
 import org.apache.log4j.Logger;
@@ -34,7 +34,7 @@ public class StudentController {
         logger.info("接收到的student" + student);
         int num = studentService.insertSelective(student);
         logger.info("新增影响的行数:"+num);
-        return "forward:/vStuClaController/showAllStudents.do";
+        return "redirect:/vStuClaController/showAllStudents.do";
     }
 
     @RequestMapping("/updateStudentUI.do")

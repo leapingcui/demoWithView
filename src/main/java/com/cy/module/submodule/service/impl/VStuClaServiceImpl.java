@@ -1,7 +1,7 @@
 package com.cy.module.submodule.service.impl;
 
-import com.cy.module.submodule.entity.VStuCla;
-import com.cy.module.submodule.entity.VStuClaExample;
+import com.cy.module.submodule.pojo.VStuCla;
+import com.cy.module.submodule.pojo.VStuClaExample;
 import com.cy.module.submodule.mapper.VStuClaMapper;
 import com.cy.module.submodule.service.VStuClaService;
 import com.github.pagehelper.PageHelper;
