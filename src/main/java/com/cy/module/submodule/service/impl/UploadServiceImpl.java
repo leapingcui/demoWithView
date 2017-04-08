@@ -24,6 +24,15 @@ public class UploadServiceImpl implements UploadService {
     private static final Logger logger = Logger.getLogger(StudentController.class);
 
     public String uploadPic(CommonsMultipartFile cmMpFile) {
+
+        String result = null;
+        long cmMpFileSize = cmMpFile.getSize();
+        if (cmMpFileSize > Commons.UPLOAD_PIC_MAXSIZE) {
+            String sizeErr = Commons.UPLOAD_PIC_EXCEEDSIZE_ERR;
+            result = "{\"sizeErr\":\"" + sizeErr + "\"}";
+            return result;
+        }
+
         String prefix = UUID.randomUUID().toString();
         String suffix = cmMpFile.getOriginalFilename();
         logger.info("原始文件名:" + suffix);
@@ -70,7 +79,7 @@ public class UploadServiceImpl implements UploadService {
         String relativePath = subDir + "/" + newFileName;
         logger.info("相对路径:" + relativePath);
         //{"":"","":""}
-        String result = "{\"absolutePath\":\"" + absolutePath + "\",\"relativePath\":\"" + relativePath + "\"}";
+        result = "{\"absolutePath\":\"" + absolutePath + "\",\"relativePath\":\"" + relativePath + "\"}";
 
         return result;
     }
