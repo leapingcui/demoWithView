@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 /**
  * Created by Administrator on 2017/3/21.
  */
@@ -41,6 +42,11 @@ public class StudentController {
     public String updateStudentUI(Model model, Integer stuId){
         logger.info("接收到的学号参数:" + stuId);
         VStuCla vStuCla = vStuClaService.selectByPrimaryKey(stuId);
+        String stuPic = vStuCla.getStuPic();
+        if (stuPic == null) {
+            //事先在磁盘上准备好了noPic.jgg
+            vStuCla.setStuPic("/0/0/noPic.jpg");
+        }
         model.addAttribute("vStuCla", vStuCla);
         return "module/submodule/updateStudent";
     }
@@ -49,7 +55,7 @@ public class StudentController {
     public String updateStudent(Student student){
         logger.info("接收到的学生" + student);
         studentService.updateByPrimaryKeySelective(student);
-        return "forward:/vStuClaController/showAllStudents.do";
+        return "redirect:/vStuClaController/showAllStudents.do";
     }
 
     @RequestMapping("/deleteStudent.do")

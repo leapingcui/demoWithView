@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>学生详情</h1>
-    <a href="javascript:history.back()">返回</a>
+    <%--<a href="javascript:history.back()">返回</a>--%>
     <button onclick="history.back()">返回</button>
     <table border="1">
         <tr>
@@ -27,7 +27,7 @@
         </tr>
         <tr>
             <td>班级号</td>
-            <td>${vStuCla.claId}</td>
+            <td>${vStuCla.stuClaId}</td>
         </tr>
         <tr>
             <td>班级名</td>
@@ -37,7 +37,10 @@
             <td>班级人数</td>
             <td>${vStuCla.claTotalNum}</td>
         </tr>
+        <tr>
+            <td>照片</td>
+            <td><img src="${uploadPath}/${vStuCla.stuPic}"></td>
+        </tr>
     </table>
-
 </body>
 </html>

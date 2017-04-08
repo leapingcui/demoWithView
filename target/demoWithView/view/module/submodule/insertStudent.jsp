@@ -34,7 +34,6 @@
                     var json = $.parseJSON(data);
 //                    alert(getJsonLength(json));
                     if(getJsonLength(json) == 1) {
-//                        $("#err").text(json.sizeErr);
                         alert(json.sizeErr);
                     } else {
                         //返回服务器图片路径，把图片路径设置给img标签(没法及时回显！！！！！！！)
@@ -49,6 +48,7 @@
             };
             $("#itemForm").ajaxSubmit(option);
         }
+
     </script>
 
 </head>
@@ -71,10 +71,9 @@
                 <%--<img src='http://localhost:8080/upload/tou_xiang.jpg' />能显示（在tomcat的server.xml中配置了虚拟目录）--%>
                 <%--http://localhost:8080/demowv/upload/tou_xiang.jpg 立即回显时有问题，怀疑是idea的问题--%>
                 <%--<img src='${webRoot}/upload/tou_xiang.jpg' id="imgSrc" name="imgSrc" width="100px"/>--%>
-                <img src='${absolutePath}' id="imgSrc" name="imgSrc" width="100px" />
+                <img  id="imgSrc" name="imgSrc" />
                 <input type="file" id="picFile" name="picFile" onchange="submitPicUpload()" />
-                    <span id="err" style="color: red"></span>
-                <input type="hidden" id="stuPic" name="stuPic" value="${relativePath}" />
+                <input type="hidden" id="stuPic" name="stuPic" value="" />
 
             </td>
         </tr>
@@ -102,7 +101,15 @@
         </tr>
     </table>
 </form>
+<script type="text/javascript">
+    window.onload = function checkSrc() {
+        if (document.getElementById("imgSrc").src=="") {
+//            alert("haha");
+            document.getElementById("imgSrc").src = "${webRoot}/statics/images/noPic.jpg";
+        }
+    }
 
+</script>
 
 </body>
 </html>
