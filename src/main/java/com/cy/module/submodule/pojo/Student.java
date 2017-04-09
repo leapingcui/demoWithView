@@ -75,4 +75,17 @@ public class Student {
     public void setStuClaId(String stuClaId) {
         this.stuClaId = stuClaId == null ? null : stuClaId.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "stuId=" + stuId +
+                ", stuPwd='" + stuPwd + '\'' +
+                ", stuName='" + stuName + '\'' +
+                ", stuPic='" + stuPic + '\'' +
+                ", stuSex='" + stuSex + '\'' +
+                ", stuBirth=" + stuBirth +
+                ", stuClaId='" + stuClaId + '\'' +
+                '}';
+    }
 }

@@ -28,6 +28,7 @@ public class VStuClaServiceImpl implements VStuClaService {
     public PageInfo<VStuCla> selectAll(SearchColumn searchColumn,Integer pageNum,Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         VStuClaExample example = new VStuClaExample();
+        example.setOrderByClause("stu_id");//按照学号排序
         VStuClaExample.Criteria criteria = example.createCriteria();
 
         if (searchColumn.getStuId() != null)

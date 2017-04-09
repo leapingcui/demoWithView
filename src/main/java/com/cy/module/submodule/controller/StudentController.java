@@ -61,7 +61,7 @@ public class StudentController {
     @RequestMapping("/deleteStudent.do")
     public String deleteStudent(Integer stuId){
         studentService.deleteByPrimaryKey(stuId);
-        return "forward:/vStuClaController/showAllStudents.do";
+        return "redirect:/vStuClaController/showAllStudents.do";
     }
 
 

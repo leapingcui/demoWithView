@@ -30,4 +30,13 @@ public class Classes {
     public void setClaTotalNum(Integer claTotalNum) {
         this.claTotalNum = claTotalNum;
     }
+
+    @Override
+    public String toString() {
+        return "Classes{" +
+                "claId='" + claId + '\'' +
+                ", claName='" + claName + '\'' +
+                ", claTotalNum=" + claTotalNum +
+                '}';
+    }
 }

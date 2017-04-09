@@ -95,4 +95,19 @@ public class VStuCla {
     public void setClaTotalNum(Integer claTotalNum) {
         this.claTotalNum = claTotalNum;
     }
+
+    @Override
+    public String toString() {
+        return "VStuCla{" +
+                "stuId=" + stuId +
+                ", stuPwd='" + stuPwd + '\'' +
+                ", stuName='" + stuName + '\'' +
+                ", stuPic='" + stuPic + '\'' +
+                ", stuSex='" + stuSex + '\'' +
+                ", stuBirth=" + stuBirth +
+                ", stuClaId='" + stuClaId + '\'' +
+                ", claName='" + claName + '\'' +
+                ", claTotalNum=" + claTotalNum +
+                '}';
+    }
 }
