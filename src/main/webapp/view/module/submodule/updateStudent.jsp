@@ -16,7 +16,7 @@
         function submitPicUpload() {
             var option={
                 type:'POST',
-                url:'${webRoot}/uploadController/uploadPic.do',
+                url:'${webRoot}/fileController/uploadPic.do',
                 contentType:"application/json;charset=utf-8",
                 dataType:'text',//返回纯文本字符串
                 data:{
@@ -29,7 +29,7 @@
                     if(getJsonLength(json) == 1) {
                         alert(json.sizeErr);
                     } else {
-                        //返回服务器图片路径，把图片路径设置给img标签(没法及时回显！！！！！！！)
+                        //返回服务器图片路径，把图片路径设置给img标签
                         $("#imgSrc").attr("src", json.absolutePath);
                         //数据库保存相对路径
                         $("#stuPic").val(json.relativePath);
@@ -92,7 +92,10 @@
         <tr>
             <td>照片:</td>
             <td>
-                <img src="${uploadPath}/${vStuCla.stuPic}" id="imgSrc" name="imgSrc" />
+                <%--<a href="${webRoot}/fileController/downloadFile.do?stuPic=${vStuCla.stuPic}" target="_blank">--%>
+                <a href="${webRoot}/fileController/downloadFile.do?stuPic=${vStuCla.stuPic}" target="_blank">
+                    <img src="${uploadPath}/${vStuCla.stuPic}" id="imgSrc" name="imgSrc" />
+                </a>
                 <input type="file" id="picFile" name="picFile" onchange="submitPicUpload()" />
                 <input type="hidden" id="stuPic" name="stuPic" value="${vStuCla.stuPic}" />
             </td>

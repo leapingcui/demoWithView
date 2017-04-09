@@ -45,7 +45,7 @@ public class StudentController {
         String stuPic = vStuCla.getStuPic();
         if (stuPic == null) {
             //事先在磁盘上准备好了noPic.jgg
-            vStuCla.setStuPic("/0/0/noPic.jpg");
+            vStuCla.setStuPic("/0/0/a_noPic.jpg");
         }
         model.addAttribute("vStuCla", vStuCla);
         return "module/submodule/updateStudent";

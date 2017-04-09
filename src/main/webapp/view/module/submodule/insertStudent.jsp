@@ -23,7 +23,7 @@
         function submitPicUpload() {
             var option={
                 type:'POST',
-                url:'${webRoot}/uploadController/uploadPic.do',
+                url:'${webRoot}/fileController/uploadPic.do',
                 contentType:"application/json;charset=utf-8",
                 dataType:'text',//返回纯文本字符串
                 data:{
@@ -36,7 +36,7 @@
                     if(getJsonLength(json) == 1) {
                         alert(json.sizeErr);
                     } else {
-                        //返回服务器图片路径，把图片路径设置给img标签(没法及时回显！！！！！！！)
+                        //返回服务器图片路径，把图片路径设置给img标签
                         $("#imgSrc").attr("src", json.absolutePath);
                         //数据库保存相对路径
                         $("#stuPic").val(json.relativePath);
@@ -105,7 +105,7 @@
     window.onload = function checkSrc() {
         if (document.getElementById("imgSrc").src=="") {
 //            alert("haha");
-            document.getElementById("imgSrc").src = "${webRoot}/statics/images/noPic.jpg";
+            document.getElementById("imgSrc").src = "${webRoot}/statics/images/a_noPic.jpg";
         }
     }
 

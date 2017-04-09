@@ -1,7 +1,7 @@
 package com.cy.module.submodule.service.impl;
 
 import com.cy.module.submodule.controller.StudentController;
-import com.cy.module.submodule.service.UploadService;
+import com.cy.module.submodule.service.FileService;
 import common.utils.Commons;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ import java.util.UUID;
  */
 @Service
 @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.DEFAULT)
-public class UploadServiceImpl implements UploadService {
+public class FileServiceImpl implements FileService {
 
     private static final Logger logger = Logger.getLogger(StudentController.class);
 
